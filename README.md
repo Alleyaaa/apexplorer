@@ -1,8 +1,6 @@
 <div align="center">
 
-# APExplorer
-
-**API Explorer & Binary Analyzer**
+![capsule](https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,100:00FF41&height=180&section=header&text=APExplorer&fontSize=60&fontColor=00FF41&fontAlignY=45&desc=API%20Explorer%20%26%20Binary%20Analyzer&descAlignY=68&descSize=18&descColor=ffffff)
 
 *A developer and security research tool for reverse-engineering APIs and performing static file analysis.*
 
@@ -23,7 +21,7 @@
 ## 📑 Table of Contents
 
 - [✨ Features](#-features)
-- [🎥 Demo](#-demo)
+- [🎥 Screenshots](#-screenshots)
 - [🛠 Tech Stack](#-tech-stack)
 - [🏗 Architecture](#-architecture)
 - [🚀 Getting Started](#-getting-started)
@@ -59,71 +57,37 @@ Upload any file for instant static security analysis:
 - **Suspicious Flags** — Auto-detection of PE/ELF binaries, high entropy, and dangerous string patterns
 
 ### 📁 Collections
-Organize saved requests into color-coded groups for better workflow management:
-- Create unlimited collections
+- Create unlimited collections with color-coded groups
 - Drag & drop reordering
 - Export / import as JSON
 
 ### 📊 Dashboard
-Stats overview with:
 - HTTP method breakdown (GET, POST, PUT, DELETE, etc.)
 - Status code distribution charts
-- Recent activity feed
-- Quick stats cards & response time analytics
+- Recent activity feed & response time analytics
 
 ---
 
-## 🎥 Demo
+## 🎥 Screenshots
 
-<div align="center">
+### 🔐 File Analyzer — Overview
+> Hashes, entropy bar, MIME type detection at a glance
 
-### API Explorer in Action
+![File Analyzer Overview](docs/screenshots/file-analyzer-overview.png)
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│  GET  https://api.example.com/users                         │
-├─────────────────────────────────────────────────────────────┤
-│  Headers                    Body           Params           │
-│  ─────────────────────────────────────────────────────────  │
-│  Authorization: Bearer eyJhbG...                            │
-│  Content-Type: application/json                             │
-├─────────────────────────────────────────────────────────────┤
-│  Response: 200 OK  |  124ms  |  1.2 KB                      │
-├─────────────────────────────────────────────────────────────┤
-│  {                                                          │
-│    "data": [                                                │
-│      { "id": 1, "name": "Alice", "role": "admin" },         │
-│      { "id": 2, "name": "Bob",   "role": "user"  }          │
-│    ],                                                       │
-│    "total": 2                                               │
-│  }                                                          │
-└─────────────────────────────────────────────────────────────┘
-```
+---
 
-### File Analyzer Results
+### 🔤 File Analyzer — Strings
+> Extracted printable ASCII strings from the binary
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│  File: suspicious.exe  |  Size: 2.4 MB                      │
-├─────────────────────────────────────────────────────────────┤
-│  ⚠️  SUSPICIOUS FILE DETECTED                               │
-├─────────────────────────────────────────────────────────────┤
-│  Hashes:                                                    │
-│    MD5:    d41d8cd98f00b204e9800998ecf8427e                 │
-│    SHA256: e3b0c44298fc1c149afbf4c8996fb924...              │
-│                                                             │
-│  Entropy: 7.89 / 8.00  🔴 HIGH (likely packed/encrypted)   │
-│  MIME:    application/x-dosexec  🔴 PE Binary               │
-│                                                             │
-│  Suspicious Strings Found:                                  │
-│    › CreateRemoteThread                                     │
-│    › VirtualAllocEx                                         │
-│    › WriteProcessMemory                                     │
-│    › http://evil-c2-server.com/payload                      │
-└─────────────────────────────────────────────────────────────┘
-```
+![File Analyzer Strings](docs/screenshots/file-analyzer-strings.png)
 
-</div>
+---
+
+### 🔢 File Analyzer — Hex Dump
+> First 256 bytes rendered with address + ASCII view
+
+![File Analyzer Hex](docs/screenshots/file-analyzer-hex.png)
 
 ---
 
@@ -325,13 +289,9 @@ curl -X POST http://localhost:8080/api/v1/analyze \
 ### Production Best Practices
 
 ```bash
-# Run in production mode
 NODE_ENV=production pnpm start
-
-# Use strong database credentials
 DATABASE_URL="postgresql://strong_user:strong_password@localhost:5432/apexplorer"
-
-# Enable HTTPS — set up a reverse proxy (nginx / traefik) with SSL termination
+# Set up nginx / traefik with SSL for HTTPS
 ```
 
 ---
@@ -361,14 +321,12 @@ vercel --prod
 2. Set environment variables (`DATABASE_URL`, `PORT`)
 3. Push to `main` — deploys automatically
 
-### 🖥 Manual Server Deployment
+### 🖥 Manual Server
 
 ```bash
-# Build production assets
 pnpm --filter @workspace/apexplorer run build
 pnpm --filter @workspace/api-server run build
 
-# Start production server
 NODE_ENV=production \
   DATABASE_URL="postgresql://..." \
   pnpm --filter @workspace/api-server start
@@ -381,17 +339,10 @@ NODE_ENV=production \
 Contributions are welcome! 🎉
 
 ```bash
-# 1. Fork the repo and clone it
-git clone https://github.com/<your-username>/apexplorer.git
-
-# 2. Create a feature branch
 git checkout -b feature/amazing-feature
-
-# 3. Commit your changes
 git commit -m 'feat: add amazing feature'
-
-# 4. Push and open a Pull Request
 git push origin feature/amazing-feature
+# Then open a Pull Request
 ```
 
 ### Commit Convention
@@ -414,11 +365,10 @@ git push origin feature/amazing-feature
 
 **Added**
 - ✨ Initial release with full API Explorer
-- 🔐 File Analyzer with entropy, hashing, and suspicious detection
+- 🔐 File Analyzer — entropy, hashing, strings, hex dump
 - 📁 Collections management
 - 📊 Dashboard with stats and charts
 - 🐳 Docker support
-- 📖 Full API documentation
 
 **Security**
 - Static file analysis (no execution)
@@ -444,5 +394,7 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 Made with ❤️ by [Alleyaaa](https://github.com/Alleyaaa)
 
 ⭐ **Star this repo if you find it useful!**
+
+![footer](https://capsule-render.vercel.app/api?type=waving&color=0:00FF41,100:0d1117&height=100&section=footer)
 
 </div>
