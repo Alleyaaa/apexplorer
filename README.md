@@ -1,7 +1,5 @@
 <div align="center">
 
-![capsule](https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,100:00FF41&height=180&section=header&text=APExplorer&fontSize=60&fontColor=00FF41&fontAlignY=45&desc=API%20Explorer%20%26%20Binary%20Analyzer&descAlignY=68&descSize=18&descColor=ffffff)
-
 *A developer and security research tool for reverse-engineering APIs and performing static file analysis.*
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](https://opensource.org/licenses/MIT)
